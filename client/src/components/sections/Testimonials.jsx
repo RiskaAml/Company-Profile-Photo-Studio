@@ -1,0 +1,56 @@
+import useReveal from '../../hooks/useReveal'
+
+const REVIEWS = [
+  { id:1, name:'Ayu Maharani',   role:'Content Creator',  text:'Self photo di AF Studio hasilnya keren banget! Lighting bagus, backdrop banyak pilihan. Udah jadi langganan tiap bulan.', rating:5, tag:'Self Photo', tagColor:'text-mint-DEFAULT bg-mint-DEFAULT/10' },
+  { id:2, name:'Reza & Dinda',   role:'Prewedding',       text:'Foto prewedding beyond expectation! Fotografernya sabar dan hasilnya natural banget. Highly recommended!', rating:5, tag:'Photoshoot', tagColor:'text-purple-DEFAULT bg-purple-DEFAULT/10' },
+  { id:3, name:'Citra Dewi',     role:'Mahasiswi UMSIDA', text:'Foto wisuda elegan dan natural. Tim ramah, bikin nyaman dari awal sampai akhir.', rating:5, tag:'Photoshoot', tagColor:'text-purple-DEFAULT bg-purple-DEFAULT/10' },
+  { id:4, name:'Budi Santoso',   role:'Owner UMKM',       text:'Foto produk jadi jauh lebih profesional. Penjualan naik signifikan setelah ganti foto pakai AF Studio!', rating:5, tag:'Photoshoot', tagColor:'text-purple-DEFAULT bg-purple-DEFAULT/10' },
+  { id:5, name:'Tim KKN UMSIDA', role:'Mahasiswa',        text:'Sewa kamera seminggu untuk dokumentasi KKN. Harga terjangkau, kamera bagus, staff helpful.', rating:5, tag:'Rental', tagColor:'text-pink bg-pink/10' },
+  { id:6, name:'Nadia Putri',    role:'Beauty Influencer',text:'Studio-nya instagramable! Props lengkap, hasilnya konsisten. Teman-teman sering tanya foto aku di mana.', rating:5, tag:'Self Photo', tagColor:'text-mint-DEFAULT bg-mint-DEFAULT/10' },
+]
+
+export default function Testimonials() {
+  const ref = useReveal()
+  return (
+    <section id="testimoni" ref={ref} className="section-y bg-white dark:bg-d1">
+      <div className="container-x">
+        <div className="mb-12">
+          <p className="reveal text-xs font-semibold text-mint-DEFAULT uppercase tracking-widest mb-3">— What They Say</p>
+          <div className="reveal flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <h2 className="font-display font-bold text-2xl md:text-3xl text-main">Kata mereka.</h2>
+            <div className="flex items-center gap-2">
+              <div className="flex gap-0.5">{[...Array(5)].map((_,i)=><span key={i} className="text-yellow text-base">★</span>)}</div>
+              <span className="font-display font-bold text-main">4.9</span>
+              <span className="text-sub text-sm">· 1.000+ ulasan</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {REVIEWS.map((r, i) => (
+            <div key={r.id}
+              className="reveal bg-zinc-50 dark:bg-d0 border border-zinc-200 dark:border-d3 rounded-2xl p-5 hover:border-zinc-300 dark:hover:border-d2 transition-colors"
+              style={{ transitionDelay: `${i * 60}ms` }}>
+              <div className="flex gap-0.5 mb-3">
+                {[...Array(r.rating)].map((_,j)=><span key={j} className="text-yellow text-sm">★</span>)}
+              </div>
+              <p className="text-main/80 text-sm leading-relaxed mb-4">"{r.text}"</p>
+              <div className="flex items-center justify-between pt-3 border-t border-zinc-200 dark:border-d3">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-mint-DEFAULT/30 to-purple-DEFAULT/30 text-main font-display font-bold text-sm flex items-center justify-center flex-shrink-0">
+                    {r.name[0]}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-main text-sm leading-none">{r.name}</div>
+                    <div className="text-sub text-xs mt-0.5">{r.role}</div>
+                  </div>
+                </div>
+                <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${r.tagColor}`}>{r.tag}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

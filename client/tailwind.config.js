@@ -1,38 +1,38 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Clash Display"', 'sans-serif'],
-        body: ['"Plus Jakarta Sans"', 'sans-serif'],
+        display: ['"Space Grotesk"', 'sans-serif'],
+        body:    ['"Inter"', 'sans-serif'],
       },
       colors: {
-        cream: '#FAF8F3',
-        charcoal: '#1C1C1E',
-        sage: '#7C9A7E',
-        blush: '#E8A598',
-        gold: '#D4A847',
-        sky: '#A8C5DA',
+        mint:    { DEFAULT: '#00E5CC', dark: '#00B3A0', light: '#E0FBF8' },
+        purple:  { DEFAULT: '#A855F7', dark: '#7C3AED', light: '#F3E8FF' },
+        pink:    '#EC4899',
+        yellow:  '#FACC15',
+        // dark mode surfaces
+        d0: '#0A0A0F',   // darkest bg
+        d1: '#111118',   // card bg
+        d2: '#1A1A24',   // elevated
+        d3: '#252532',   // border
+        // light mode surfaces
+        l0: '#FAFAFA',
+        l1: '#FFFFFF',
+        l2: '#F4F4F6',
+        l3: '#E4E4E8',
       },
       animation: {
-        'fade-up': 'fadeUp 0.6s ease forwards',
-        'fade-in': 'fadeIn 0.4s ease forwards',
-        'float': 'float 6s ease-in-out infinite',
+        'glow':        'glow 3s ease-in-out infinite',
+        'slide-up':    'slideUp 0.5s ease forwards',
+        'fade-in':     'fadeIn 0.4s ease forwards',
       },
       keyframes: {
-        fadeUp: {
-          '0%': { opacity: 0, transform: 'translateY(24px)' },
-          '100%': { opacity: 1, transform: 'translateY(0)' },
-        },
-        fadeIn: {
-          '0%': { opacity: 0 },
-          '100%': { opacity: 1 },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-12px)' },
-        }
+        glow:    { '0%,100%': { opacity: 0.6 }, '50%': { opacity: 1 } },
+        slideUp: { from: { opacity: 0, transform: 'translateY(20px)' }, to: { opacity: 1, transform: 'translateY(0)' } },
+        fadeIn:  { from: { opacity: 0 }, to: { opacity: 1 } },
       }
     }
   },
