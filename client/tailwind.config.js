@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
@@ -13,16 +12,16 @@ export default {
         purple:  { DEFAULT: '#A855F7', dark: '#7C3AED', light: '#F3E8FF' },
         pink:    '#EC4899',
         yellow:  '#FACC15',
-        // dark mode surfaces
-        d0: '#0A0A0F',   // darkest bg
-        d1: '#111118',   // card bg
-        d2: '#1A1A24',   // elevated
-        d3: '#252532',   // border
-        // light mode surfaces
-        l0: '#FAFAFA',
-        l1: '#FFFFFF',
-        l2: '#F4F4F6',
-        l3: '#E4E4E8',
+        // deep contrast (used for overlays, footer, button text)
+        d0: '#0A0A0F',
+        d1: '#111118',
+        d2: '#1A1A24',
+        d3: '#252532',
+        // light surfaces (mint-tinted)
+        l0: '#F0FDFB',   // main background
+        l1: '#FFFFFF',   // cards
+        l2: '#E6FAF7',   // alternating section / image containers
+        l3: '#C5F0EA',   // borders
       },
       animation: {
         'glow':        'glow 3s ease-in-out infinite',

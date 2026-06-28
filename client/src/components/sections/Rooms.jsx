@@ -1,4 +1,4 @@
-import PhotoSlot from '../PhotoSlot'
+﻿import PhotoSlot from '../PhotoSlot'
 import useReveal from '../../hooks/useReveal'
 
 // ── ISI FOTO RUANGAN ──────────────────────────────────────────
@@ -12,7 +12,7 @@ const ROOMS = [
 export default function Rooms() {
   const ref = useReveal()
   return (
-    <section id="ruangan" ref={ref} className="section-y bg-white dark:bg-d1">
+    <section id="ruangan" ref={ref} className="section-y bg-white">
       <div className="container-x">
         <div className="mb-12">
           <p className="reveal text-xs font-semibold text-mint-DEFAULT uppercase tracking-widest mb-3">— Studio Rooms</p>
@@ -25,7 +25,7 @@ export default function Rooms() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {ROOMS.map((r, i) => (
             <div key={r.name}
-              className="reveal group bg-zinc-50 dark:bg-d0 border border-zinc-200 dark:border-d3 rounded-2xl overflow-hidden hover:border-mint-DEFAULT/40 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md dark:hover:shadow-black/30"
+              className="reveal group bg-[#F0FDFB] border border-[#C5F0EA] rounded-2xl overflow-hidden hover:border-mint-DEFAULT/40 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
               style={{ transitionDelay: `${i * 80}ms` }}>
               <div className="h-44 overflow-hidden">
                 <PhotoSlot src={r.src} alt={r.name} className="w-full h-full rounded-none" />

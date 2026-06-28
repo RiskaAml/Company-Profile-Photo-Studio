@@ -1,4 +1,4 @@
-// Cara pakai: <PhotoSlot src="/photos/hero.jpg" alt="Hero" className="h-64 rounded-xl" />
+﻿// Cara pakai: <PhotoSlot src="/photos/hero.jpg" alt="Hero" className="h-64 rounded-xl" />
 // Kalau src kosong/undefined, tampil placeholder abu-abu
 export default function PhotoSlot({ src, alt = 'Foto', className = '' }) {
   if (src) return <img src={src} alt={alt} className={`object-cover w-full h-full ${className}`} loading="lazy" />

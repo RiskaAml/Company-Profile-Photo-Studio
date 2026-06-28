@@ -6,29 +6,24 @@
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
 
-  /* LIGHT MODE defaults */
   body {
-    background: #FAFAFA;
+    background: #F0FDFB;
     color: #0A0A0F;
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
-    transition: background 0.3s ease, color 0.3s ease;
   }
 
-  /* DARK MODE */
-  .dark body { background: #0A0A0F; color: #F0F0F5; }
-  .dark { color-scheme: dark; }
 }
 
 @layer utilities {
   .container-x  { @apply max-w-6xl mx-auto px-5 md:px-8; }
   .section-y    { @apply py-16 md:py-24; }
   .font-display { font-family: 'Space Grotesk', sans-serif; }
-  .card-base    { @apply bg-white dark:bg-d1 border border-l3 dark:border-d3 rounded-2xl; }
-  .text-main    { @apply text-zinc-900 dark:text-zinc-100; }
-  .text-sub     { @apply text-zinc-500 dark:text-zinc-400; }
-  .bg-surface   { @apply bg-zinc-50 dark:bg-d0; }
-  .bg-elevated  { @apply bg-white dark:bg-d1; }
+  .card-base    { @apply bg-white border border-l3 rounded-2xl; }
+  .text-main    { @apply text-zinc-900; }
+  .text-sub     { @apply text-zinc-500; }
+  .bg-surface   { @apply bg-[#F0FDFB]; }
+  .bg-elevated  { @apply bg-white; }
 }
 
 /* Photo placeholder */
@@ -43,11 +38,6 @@
   font-size: 12px;
   font-weight: 500;
   border: 1.5px dashed #D0D0D8;
-}
-.dark .photo-slot {
-  background: #1A1A24;
-  border-color: #252532;
-  color: #52525B;
 }
 
 /* Scroll reveal */
@@ -70,3 +60,8 @@
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #00E5CC; border-radius: 4px; }
+
+/* Tailwind color overrides */
+.bg-mint-DEFAULT { background-color: #00E5CC !important; }
+.text-d0         { color: #0A0A0F !important; }
+.bg-mint-dark    { background-color: #00B3A0 !important; }

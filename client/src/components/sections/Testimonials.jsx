@@ -1,10 +1,10 @@
-import useReveal from '../../hooks/useReveal'
+﻿import useReveal from '../../hooks/useReveal'
 
 const REVIEWS = [
-  { id:1, name:'Ayu Maharani',   role:'Content Creator',  text:'Self photo di AF Studio hasilnya keren banget! Lighting bagus, backdrop banyak pilihan. Udah jadi langganan tiap bulan.', rating:5, tag:'Self Photo', tagColor:'text-mint-DEFAULT bg-mint-DEFAULT/10' },
+  { id:1, name:'Ayu Maharani',   role:'Content Creator',  text:'Self photo di Dolananpoto hasilnya keren banget! Lighting bagus, backdrop banyak pilihan. Udah jadi langganan tiap bulan.', rating:5, tag:'Self Photo', tagColor:'text-mint-DEFAULT bg-mint-DEFAULT/10' },
   { id:2, name:'Reza & Dinda',   role:'Prewedding',       text:'Foto prewedding beyond expectation! Fotografernya sabar dan hasilnya natural banget. Highly recommended!', rating:5, tag:'Photoshoot', tagColor:'text-purple-DEFAULT bg-purple-DEFAULT/10' },
   { id:3, name:'Citra Dewi',     role:'Mahasiswi UMSIDA', text:'Foto wisuda elegan dan natural. Tim ramah, bikin nyaman dari awal sampai akhir.', rating:5, tag:'Photoshoot', tagColor:'text-purple-DEFAULT bg-purple-DEFAULT/10' },
-  { id:4, name:'Budi Santoso',   role:'Owner UMKM',       text:'Foto produk jadi jauh lebih profesional. Penjualan naik signifikan setelah ganti foto pakai AF Studio!', rating:5, tag:'Photoshoot', tagColor:'text-purple-DEFAULT bg-purple-DEFAULT/10' },
+  { id:4, name:'Budi Santoso',   role:'Owner UMKM',       text:'Foto produk jadi jauh lebih profesional. Penjualan naik signifikan setelah ganti foto pakai Dolananpoto!', rating:5, tag:'Photoshoot', tagColor:'text-purple-DEFAULT bg-purple-DEFAULT/10' },
   { id:5, name:'Tim KKN UMSIDA', role:'Mahasiswa',        text:'Sewa kamera seminggu untuk dokumentasi KKN. Harga terjangkau, kamera bagus, staff helpful.', rating:5, tag:'Rental', tagColor:'text-pink bg-pink/10' },
   { id:6, name:'Nadia Putri',    role:'Beauty Influencer',text:'Studio-nya instagramable! Props lengkap, hasilnya konsisten. Teman-teman sering tanya foto aku di mana.', rating:5, tag:'Self Photo', tagColor:'text-mint-DEFAULT bg-mint-DEFAULT/10' },
 ]
@@ -12,7 +12,7 @@ const REVIEWS = [
 export default function Testimonials() {
   const ref = useReveal()
   return (
-    <section id="testimoni" ref={ref} className="section-y bg-white dark:bg-d1">
+    <section id="testimoni" ref={ref} className="section-y bg-white">
       <div className="container-x">
         <div className="mb-12">
           <p className="reveal text-xs font-semibold text-mint-DEFAULT uppercase tracking-widest mb-3">— What They Say</p>
@@ -29,13 +29,13 @@ export default function Testimonials() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {REVIEWS.map((r, i) => (
             <div key={r.id}
-              className="reveal bg-zinc-50 dark:bg-d0 border border-zinc-200 dark:border-d3 rounded-2xl p-5 hover:border-zinc-300 dark:hover:border-d2 transition-colors"
+              className="reveal bg-[#F0FDFB] border border-[#C5F0EA] rounded-2xl p-5 hover:border-[#A8E6DF] transition-colors"
               style={{ transitionDelay: `${i * 60}ms` }}>
               <div className="flex gap-0.5 mb-3">
                 {[...Array(r.rating)].map((_,j)=><span key={j} className="text-yellow text-sm">★</span>)}
               </div>
-              <p className="text-main/80 text-sm leading-relaxed mb-4">"{r.text}"</p>
-              <div className="flex items-center justify-between pt-3 border-t border-zinc-200 dark:border-d3">
+              <p className="text-main text-sm leading-relaxed mb-4">"{r.text}"</p>
+              <div className="flex items-center justify-between pt-3 border-t border-[#C5F0EA]">
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-mint-DEFAULT/30 to-purple-DEFAULT/30 text-main font-display font-bold text-sm flex items-center justify-center flex-shrink-0">
                     {r.name[0]}

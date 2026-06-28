@@ -1,19 +1,54 @@
-import { Link } from 'react-router-dom'
+﻿import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
 import PhotoSlot from '../PhotoSlot'
 import useReveal from '../../hooks/useReveal'
 
-// ── ISI FOTO LAYANAN ──────────────────────────────────────────
+const imgs = import.meta.glob('../../assets/*.{png,jpg,jpeg,webp,svg}', { eager: true, query: '?url', import: 'default' })
+const img  = (n) => imgs[`../../assets/${n}`] ?? ''
+
 const SERVICES = [
-  { slug:'photoshoot', name:'Photoshoot & Video', desc:'Fotografer profesional untuk portrait, produk, wisuda, prewedding, dan konten bisnis. Sudah termasuk editing.', src:'', price:'Rp 150.000', unit:'/sesi', badge:'Paling Lengkap', badgeBg:'bg-purple-DEFAULT/10 text-purple-DEFAULT border-purple-DEFAULT/20', accent:'from-purple-DEFAULT/10', dot:'bg-purple-DEFAULT' },
-  { slug:'selfphoto',  name:'Self Photo',          desc:'Studio siap pakai. Kamu yang jadi fotografernya sendiri. Cocok banget untuk konten, seru-seruan, atau foto bareng.', src:'', price:'Rp 75.000', unit:'/30mnt', badge:'Terfavorit', badgeBg:'bg-mint-DEFAULT/10 text-mint-DEFAULT border-mint-DEFAULT/20', accent:'from-mint-DEFAULT/10', dot:'bg-mint-DEFAULT' },
-  { slug:'rental',     name:'Rental Kamera & iPhone', desc:'Sewa mirrorless, DSLR, atau iPhone terbaru + gimbal. Semua kondisi prima, tersedia harian & mingguan.', src:'', price:'Rp 100.000', unit:'/hari', badge:'Fleksibel', badgeBg:'bg-pink/10 text-pink border-pink/20', accent:'from-pink/10', dot:'bg-pink' },
+  {
+    slug: 'photoshoot',
+    name: 'Photoshoot & Video',
+    desc: 'Fotografer profesional untuk portrait, produk, wisuda, prewedding, dan konten bisnis. Sudah termasuk editing.',
+    src: img('services-photoshoot.png'),
+    price: 'Rp 150.000',
+    unit: '/sesi',
+    badge: 'Paling Lengkap',
+    badgeBg: 'bg-purple-DEFAULT/10 text-purple-DEFAULT border-purple-DEFAULT/20',
+    accent: 'from-purple-DEFAULT/10',
+    dot: 'bg-purple-DEFAULT',
+  },
+  {
+    slug: 'selfphoto',
+    name: 'Self Photo',
+    desc: 'Studio siap pakai. Kamu yang jadi fotografernya sendiri. Cocok banget untuk konten, seru-seruan, atau foto bareng.',
+    src: img('services-selfphoto.png'),
+    price: 'Rp 75.000',
+    unit: '/30mnt',
+    badge: 'Terfavorit',
+    badgeBg: 'bg-mint-DEFAULT/10 text-mint-DEFAULT border-mint-DEFAULT/20',
+    accent: 'from-mint-DEFAULT/10',
+    dot: 'bg-mint-DEFAULT',
+  },
+  {
+    slug: 'rental',
+    name: 'Rental Kamera & iPhone',
+    desc: 'Sewa mirrorless, DSLR, atau iPhone terbaru + gimbal. Semua kondisi prima, tersedia harian & mingguan.',
+    src: img('services-rental.png'),
+    price: 'Rp 100.000',
+    unit: '/hari',
+    badge: 'Fleksibel',
+    badgeBg: 'bg-pink/10 text-pink border-pink/20',
+    accent: 'from-pink/10',
+    dot: 'bg-pink',
+  },
 ]
 
 export default function Services() {
   const ref = useReveal()
   return (
-    <section id="layanan" ref={ref} className="section-y bg-zinc-50 dark:bg-d0">
+    <section id="layanan" ref={ref} className="section-y bg-[#F0FDFB]">
       <div className="container-x">
         <div className="mb-12">
           <p className="reveal text-xs font-semibold text-mint-DEFAULT uppercase tracking-widest mb-3">— Our Services</p>
@@ -26,12 +61,11 @@ export default function Services() {
         <div className="grid md:grid-cols-3 gap-5">
           {SERVICES.map((s, i) => (
             <div key={s.slug}
-              className={`reveal group bg-white dark:bg-d1 border border-zinc-200 dark:border-d3 rounded-2xl overflow-hidden hover:border-zinc-300 dark:hover:border-d2 hover:shadow-lg dark:hover:shadow-black/30 transition-all duration-300 hover:-translate-y-0.5`}
+              className={`reveal group bg-white border border-[#C5F0EA] rounded-2xl overflow-hidden hover:border-[#A8E6DF] hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5`}
               style={{ transitionDelay: `${i * 80}ms` }}>
               {/* Photo */}
               <div className="h-44 overflow-hidden relative">
                 <PhotoSlot src={s.src} alt={s.name} className="w-full h-full rounded-none" />
-                {/* gradient overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-b ${s.accent} to-transparent opacity-60`} />
               </div>
 
@@ -44,7 +78,7 @@ export default function Services() {
                 </div>
                 <h3 className="font-display font-bold text-lg text-main mb-2">{s.name}</h3>
                 <p className="text-sub text-sm leading-relaxed mb-5">{s.desc}</p>
-                <div className="flex items-center justify-between pt-4 border-t border-zinc-100 dark:border-d3">
+                <div className="flex items-center justify-between pt-4 border-t border-zinc-100">
                   <div>
                     <span className="font-display font-bold text-main">{s.price}</span>
                     <span className="text-sub text-xs ml-1">{s.unit}</span>

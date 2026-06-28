@@ -1,20 +1,22 @@
-import { useState, useEffect, useRef } from 'react'
+﻿import { useState, useEffect, useRef } from 'react'
 import { ArrowRight, MapPin, Zap } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import PhotoSlot from '../PhotoSlot'
 
-// ── ISI FOTO ──────────────────────────────────────────────────
-// src: '' = placeholder | src: '/photos/hero-1.jpg' = foto asli
+const imgs = import.meta.glob('../../assets/*.{png,jpg,jpeg,webp,svg}', { eager: true, query: '?url', import: 'default' })
+const img  = (n) => imgs[`../../assets/${n}`] ?? ''
+
 const SLIDES = [
-  { src: '', label: 'Portrait Session',   tag: 'Professional' },
-  { src: '', label: 'Self Photo',          tag: 'Fun & Creative' },
-  { src: '', label: 'Photoshoot Studio',   tag: 'Cinematic' },
-  { src: '', label: 'Rental Gear',         tag: 'Pro Equipment' },
+  { src: img('hero-1.png'), label: 'Portrait Session',   tag: 'Professional' },
+  { src: img('hero-2.png'), label: 'Self Photo',          tag: 'Fun & Creative' },
+  { src: img('hero-3.png'), label: 'Photoshoot Studio',   tag: 'Cinematic' },
+  { src: img('hero-4.png'), label: 'Rental Gear',         tag: 'Pro Equipment' },
 ]
 
 const STATS = [
-  { val: '1K+',     label: 'Happy Clients',  color: 'text-mint-DEFAULT' },
+  { val: '1K+',     label: 'Happy Clients',    color: 'text-mint-DEFAULT' },
   { val: '4 Spots', label: 'Studio Locations', color: 'text-purple-DEFAULT' },
-  { val: '4.9★',   label: 'Google Rating',   color: 'text-yellow' },
+  { val: '4.9★',   label: 'Google Rating',    color: 'text-yellow' },
   { val: '3 Services', label: 'Available Now', color: 'text-pink' },
 ]
 
@@ -28,10 +30,10 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-zinc-50 dark:bg-d0">
+    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-[#F0FDFB]">
       {/* Ambient glow blobs */}
-      <div className="absolute top-1/4 -left-32 w-80 h-80 bg-mint-DEFAULT/10 dark:bg-mint-DEFAULT/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-purple-DEFAULT/10 dark:bg-purple-DEFAULT/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 -left-32 w-80 h-80 bg-mint-DEFAULT/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-purple-DEFAULT/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container-x py-16 grid md:grid-cols-2 gap-12 items-center w-full">
         {/* Left */}
@@ -55,14 +57,14 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-3 mb-10">
-            <a href="https://wa.me/6281234567890?text=Halo%20AF%20Studio%2C%20mau%20booking!"
+            <a href="https://wa.me/6281234567890?text=Halo%20Dolananpoto%20Studio%2C%20mau%20booking!"
               target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-mint-DEFAULT hover:bg-mint-dark text-d0 font-bold px-6 py-2.5 rounded-xl transition-colors text-sm glow-mint">
+              className="flex items-center gap-2 bg-mint-DEFAULT hover:bg-mint-dark text-[#0A0A0F] font-bold px-6 py-2.5 rounded-xl transition-colors text-sm glow-mint">
               Book Sekarang <ArrowRight size={15} />
             </a>
             <a href="#layanan"
               onClick={e => { e.preventDefault(); document.getElementById('layanan')?.scrollIntoView({ behavior: 'smooth' }) }}
-              className="flex items-center gap-2 border border-zinc-300 dark:border-d3 text-main font-semibold px-6 py-2.5 rounded-xl hover:border-mint-DEFAULT hover:text-mint-DEFAULT transition-colors text-sm">
+              className="flex items-center gap-2 bg-[#0A0A0F] text-white font-semibold px-6 py-2.5 rounded-xl hover:bg-[#1A1A24] transition-colors text-sm border border-[#252532]">
               Explore Layanan
             </a>
           </div>
@@ -70,9 +72,9 @@ export default function Hero() {
           {/* Stats */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {STATS.map(s => (
-              <div key={s.label} className="bg-white dark:bg-d1 border border-zinc-200 dark:border-d3 rounded-xl px-3 py-2.5">
+              <div key={s.label} className="bg-[#0A0A0F] border border-[#252532] rounded-xl px-3 py-2.5">
                 <div className={`font-display font-bold text-base leading-none ${s.color}`}>{s.val}</div>
-                <div className="text-sub text-xs mt-1">{s.label}</div>
+                <div className="text-zinc-400 text-xs mt-1">{s.label}</div>
               </div>
             ))}
           </div>
@@ -86,14 +88,14 @@ export default function Hero() {
 
         {/* Right — slideshow */}
         <div className="relative">
-          <div className="relative rounded-2xl overflow-hidden h-80 md:h-[26rem] border border-zinc-200 dark:border-d3">
+          <div className="relative rounded-2xl overflow-hidden h-80 md:h-[26rem] border border-[#C5F0EA]">
             {SLIDES.map((s, i) => (
               <div key={i} className={`absolute inset-0 transition-opacity duration-700 ${i === idx ? 'opacity-100' : 'opacity-0'}`}>
                 <PhotoSlot src={s.src} alt={s.label} className="w-full h-full rounded-none" />
-                {s.src && <div className="absolute inset-0 bg-gradient-to-t from-d0/60 to-transparent" />}
+                {s.src && <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0F]/60 to-transparent" />}
                 {/* Label */}
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                  <span className="bg-d0/70 dark:bg-d1/70 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-lg border border-white/10">{s.label}</span>
+                  <span className="bg-[#0A0A0F]/70 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-lg border border-white/10">{s.label}</span>
                   <span className="bg-mint-DEFAULT/20 border border-mint-DEFAULT/40 text-mint-DEFAULT text-xs font-semibold px-3 py-1.5 rounded-lg">{s.tag}</span>
                 </div>
               </div>
@@ -101,7 +103,7 @@ export default function Hero() {
             {/* Dots */}
             <div className="absolute top-4 right-4 flex gap-1.5">
               {SLIDES.map((_, i) => (
-                <button key={i} onClick={() => setIdx(i)}
+                <button key={i} onClick={() => setIdx(i)} aria-label={`Tampilkan slide ${i + 1}`}
                   className={`h-1.5 rounded-full transition-all ${i === idx ? 'w-5 bg-mint-DEFAULT' : 'w-1.5 bg-white/30'}`} />
               ))}
             </div>
@@ -110,8 +112,8 @@ export default function Hero() {
           {/* Thumbnail strip */}
           <div className="grid grid-cols-4 gap-2 mt-2">
             {SLIDES.map((s, i) => (
-              <button key={i} onClick={() => setIdx(i)}
-                className={`h-14 rounded-xl overflow-hidden border transition-all ${i === idx ? 'border-mint-DEFAULT glow-mint scale-95' : 'border-zinc-200 dark:border-d3 opacity-50 hover:opacity-80'}`}>
+              <button key={i} onClick={() => setIdx(i)} aria-label={`Tampilkan ${s.label}`}
+                className={`h-14 rounded-xl overflow-hidden border transition-all ${i === idx ? 'border-mint-DEFAULT glow-mint scale-95' : 'border-[#C5F0EA] opacity-50 hover:opacity-80'}`}>
                 <PhotoSlot src={s.src} alt={s.label} className="w-full h-full rounded-none" />
               </button>
             ))}
