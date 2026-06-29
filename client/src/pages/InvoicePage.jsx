@@ -1,5 +1,5 @@
 ﻿import { useLocation, Link } from 'react-router-dom'
-import { CheckCircle, MessageCircle, Home, Clock } from 'lucide-react'
+import { CheckCircle, MessageCircle, Home } from 'lucide-react'
 import Footer from '../components/Footer'
 
 export default function InvoicePage() {
@@ -87,22 +87,12 @@ export default function InvoicePage() {
             </div>
           </div>
 
-          {/* Status */}
-          <div className="border-t border-[#C5F0EA] px-6 py-4 flex items-center gap-2">
-            <Clock size={14} className="text-yellow" />
-            <span className="text-sm text-main">Status: <span className="font-semibold text-yellow">Menunggu Konfirmasi</span></span>
-          </div>
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 mt-6">
-          <a href="https://wa.me/6281234567890?text=Halo%20Dolananpoto%20Studio!%20Saya%20sudah%20booking%2C%20Order%20ID%3A%20"
-            target="_blank" rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 bg-emerald-500 text-white font-bold text-sm py-2.5 rounded-xl hover:bg-emerald-600 transition-colors">
-            <MessageCircle size={15} /> Konfirmasi via WA
-          </a>
+        <div className="mt-6">
           <Link to="/"
-            className="flex-1 flex items-center justify-center gap-2 border border-[#C5F0EA] text-main font-semibold text-sm py-2.5 rounded-xl hover:border-[#A8E6DF] transition-colors">
+            className="w-full flex items-center justify-center gap-2 border border-[#C5F0EA] text-main font-semibold text-sm py-2.5 rounded-xl hover:border-[#A8E6DF] transition-colors">
             <Home size={15} /> Kembali ke Beranda
           </Link>
         </div>

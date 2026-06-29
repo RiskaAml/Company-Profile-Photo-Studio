@@ -12,6 +12,7 @@ import RentalBookingPage from './pages/RentalBookingPage'
 import InvoicePage from './pages/InvoicePage'
 import OrderHistoryPage from './pages/OrderHistoryPage'
 import AdminPage from './pages/AdminPage'
+import SelfPhotoPrice from './pages/SelfPhotoPrice'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { BookingProvider } from './context/BookingContext'
 
@@ -36,6 +37,7 @@ function AppRoutes() {
       <Routes>
         <Route path="/"                element={<Home />} />
         <Route path="/layanan/:slug"   element={<ServiceDetail />} />
+        <Route path="/selfphoto-harga" element={<SelfPhotoPrice />} />
         <Route path="/galeri"          element={<GalleryPage />} />
         <Route path="/masuk"           element={<LoginPage />} />
         <Route path="/daftar"          element={<SignUpPage />} />

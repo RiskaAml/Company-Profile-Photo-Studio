@@ -1,5 +1,5 @@
 ﻿import { useParams, Link, useNavigate } from 'react-router-dom'
-import { ArrowLeft, Check, MessageCircle, ChevronRight, Clock, Users, Camera } from 'lucide-react'
+import { ArrowLeft, MessageCircle, ChevronRight, Camera } from 'lucide-react'
 import PhotoSlot from '../components/PhotoSlot'
 import Footer from '../components/Footer'
 import { useAuth } from '../context/AuthContext'
@@ -14,15 +14,6 @@ const HOW_TO_ORDER_STEPS = [
   { step: 3, title: 'Bayar DP 50%', desc: 'Transfer DP 50% untuk mengamankan slot kamu. Bisa via transfer bank, QRIS, atau e-wallet.' },
   { step: 4, title: 'Hari H — Sesi Foto', desc: 'Datang tepat waktu. Tim kami siap menyambut dan memandu seluruh sesi foto kamu.' },
   { step: 5, title: 'Terima Hasil Edit', desc: 'Foto editing selesai dalam 3–5 hari kerja, dikirim via Google Drive / WhatsApp ke kamu.' },
-]
-
-// ── SELF PHOTO ─────────────────────────────────────────────────
-const SELF_PACKAGES = [
-  { id: 'sp1', name: 'Paket Hemat 30 Menit', price: 75000,  duration: '30 menit', persons: '1–2 orang',     img: 'selfphoto-1.png', popular: false, features: ['Semua backdrop','Ring light','Free props'] },
-  { id: 'sp2', name: 'Paket Standar 1 Jam',  price: 120000, duration: '1 jam',    persons: 'Hingga 4 orang', img: 'selfphoto-2.png', popular: true,  features: ['Semua backdrop','Ring light','Free props','Ganti outfit'] },
-  { id: 'sp3', name: 'Paket Premium 2 Jam',  price: 200000, duration: '2 jam',    persons: 'Hingga 6 orang', img: 'selfphoto-3.png', popular: false, features: ['Full akses backdrop','Full akses props','Bonus 5 foto edit'] },
-  { id: 'sp4', name: 'Paket Couple 1 Jam',   price: 130000, duration: '1 jam',    persons: '2 orang',        img: 'selfphoto-4.png', popular: false, features: ['Backdrop couple','Props couple','Ring light'] },
-  { id: 'sp5', name: 'Paket Kelompok 3 Jam', price: 350000, duration: '3 jam',    persons: 'Hingga 10 orang',img: 'selfphoto-5.png', popular: false, features: ['Full studio access','Free props all','Bonus 10 foto edit'] },
 ]
 
 // ── RENTAL ─────────────────────────────────────────────────────
@@ -114,14 +105,6 @@ function PhotoshootDetail() {
 
 // ── SELF PHOTO PAGE ─────────────────────────────────────────────
 function SelfPhotoDetail() {
-  const navigate  = useNavigate()
-  const { user }  = useAuth()
-
-  const handleBook = (pkg) => {
-    if (!user) { navigate('/masuk', { state: { from: `/booking/selfphoto?package=${pkg.id}` } }); return }
-    navigate(`/booking/selfphoto?package=${pkg.id}`)
-  }
-
   return (
     <>
       <div className="bg-[#F0FDFB] border-b border-[#C5F0EA] pt-16">
@@ -140,48 +123,14 @@ function SelfPhotoDetail() {
       </div>
 
       <div className="container-x py-12">
-        <div className="mb-8">
-          <p className="text-xs font-semibold text-mint-DEFAULT uppercase tracking-widest mb-2">— Katalog Paket</p>
-          <h2 className="font-display font-bold text-xl md:text-2xl text-main mb-1">Pilih paket yang sesuai.</h2>
-          <p className="text-sub text-sm">Harga transparan, tidak ada biaya tersembunyi ✅</p>
+        <div className="mb-10">
+          <Link to="/selfphoto-harga"
+            className="inline-flex items-center gap-2 bg-[#00E5CC] text-[#0A0A0F] font-bold px-6 py-3 rounded-xl hover:bg-[#00B3A0] transition-colors text-sm glow-mint">
+            Lihat Harga <ChevronRight size={15} />
+          </Link>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {SELF_PACKAGES.map(pkg => (
-            <div key={pkg.id} className={`border-2 rounded-2xl overflow-hidden bg-white transition-shadow hover:shadow-lg ${pkg.popular ? 'border-mint-DEFAULT glow-mint' : 'border-[#C5F0EA]'}`}>
-              {pkg.popular && <div className="bg-mint-DEFAULT text-d0 text-xs font-bold text-center py-1.5">⚡ Paling Favorit</div>}
-              <div className="h-40 overflow-hidden">
-                <PhotoSlot src={img(pkg.img)} alt={pkg.name} className="w-full h-full rounded-none" />
-              </div>
-              <div className="p-5">
-                <h3 className="font-display font-bold text-lg text-main mb-1">{pkg.name}</h3>
-                <div className="flex items-center gap-3 text-xs text-sub mb-3">
-                  <span className="flex items-center gap-1"><Clock size={11} /> {pkg.duration}</span>
-                  <span className="flex items-center gap-1"><Users size={11} /> {pkg.persons}</span>
-                </div>
-                <ul className="space-y-1.5 mb-4">
-                  {pkg.features.map((f, j) => (
-                    <li key={j} className="flex items-center gap-2 text-sm text-main">
-                      <Check size={13} className="text-mint-DEFAULT flex-shrink-0" />{f}
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex items-center justify-between mb-4 pt-3 border-t border-zinc-100">
-                  <div>
-                    <span className="font-display font-bold text-xl text-main">Rp {pkg.price.toLocaleString('id-ID')}</span>
-                    <span className="text-sub text-xs ml-1">/ {pkg.duration}</span>
-                  </div>
-                </div>
-                <button onClick={() => handleBook(pkg)}
-                  className="w-full flex items-center justify-center gap-2 bg-[#00E5CC] text-[#0A0A0F] font-bold text-sm py-2.5 rounded-xl hover:bg-[#00B3A0] transition-colors glow-mint">
-                  Booking Sekarang <ChevronRight size={14} />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-10 bg-gradient-to-r from-mint-DEFAULT/10 to-purple-DEFAULT/10 border border-mint-DEFAULT/20 rounded-2xl p-7 text-center">
+        <div className="bg-gradient-to-r from-mint-DEFAULT/10 to-purple-DEFAULT/10 border border-mint-DEFAULT/20 rounded-2xl p-7 text-center">
           <h3 className="font-display font-bold text-lg text-main mb-2">Bingung pilih paket?</h3>
           <p className="text-sub text-sm mb-5">Konsultasi gratis, tanpa tekanan. Kami bantu pilihkan yang terbaik!</p>
           <a href="https://wa.me/6281234567890?text=Halo%20Dolananpoto%20Studio%2C%20saya%20mau%20konsultasi%20paket%20Self%20Photo!"

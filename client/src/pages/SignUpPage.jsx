@@ -1,7 +1,10 @@
 ﻿import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { Eye, EyeOff, Camera } from 'lucide-react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Eye, EyeOff } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
+
+const assetGlob = import.meta.glob('../assets/*.{png,jpg,jpeg,webp,svg}', { eager: true, query: '?url', import: 'default' })
+const logoSrc = assetGlob['../assets/logo.png'] ?? ''
 
 export default function SignUpPage() {
   const [name, setName]       = useState('')
@@ -13,6 +16,7 @@ export default function SignUpPage() {
 
   const { signup } = useAuth()
   const navigate   = useNavigate()
+  const location   = useLocation()
 
   const submit = async (e) => {
     e.preventDefault()
@@ -23,16 +27,14 @@ export default function SignUpPage() {
     const res = signup(name, email, password)
     setLoading(false)
     if (!res.ok) { setError(res.error); return }
-    navigate('/', { replace: true })
+    navigate(location.state?.from || '/', { replace: true })
   }
 
   return (
     <div className="min-h-screen bg-[#F0FDFB] flex items-center justify-center px-5 pt-16">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-mint-DEFAULT to-purple-DEFAULT flex items-center justify-center mx-auto mb-4 glow-mint">
-            <Camera size={20} className="text-d0" />
-          </div>
+          <img src={logoSrc} alt="Dolananpoto Studio" className="w-12 h-12 rounded-full object-contain mx-auto mb-4" />
           <h1 className="font-display font-bold text-2xl text-main mb-1">Buat Akun</h1>
           <p className="text-sub text-sm">Dolananpoto Studio</p>
         </div>
