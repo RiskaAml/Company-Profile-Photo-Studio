@@ -11,10 +11,10 @@ const img = (n) => imgs[`../../assets/hero/${n}`] ?? ''
 
 
 const STATS = [
-  { val: 'Gresik', label: 'Kec. Benjeng' },
-  { val: 'Gresik', label: 'Kec. Dukun' },
-  { val: 'Lamongan', label: 'Lamongan Kota' },
-  { val: 'Bojonegoro', label: 'Kec. Dander' },
+  { val: 'Gresik',      label: 'Kec. Benjeng',    url: 'https://maps.app.goo.gl/fUmuppC5quB36MvG7' },
+  { val: 'Gresik',      label: 'Kec. Dukun',      url: 'https://maps.app.goo.gl/skEWKSbi2rnya7DRA' },
+  { val: 'Lamongan',    label: 'Lamongan Kota',    url: 'https://maps.app.goo.gl/RQAriUJ4XNEDUSKd7' },
+  { val: 'Bojonegoro',  label: 'Kec. Dander',      url: 'https://maps.app.goo.gl/w1po2BD1HQoxxhDQA' },
 ]
 
 
@@ -283,38 +283,15 @@ export default function Hero() {
           ">
 
 
-          {STATS.map((s)=>(
-
-            <div
-            key={s.label}
-            className="
-              bg-[#0A0A0F]
-              rounded-xl
-              px-3
-              py-3
-            "
-            >
-
-              <div className="
-                text-[#FFD83D]
-                font-bold
-                text-sm
-              ">
+          {STATS.map((s) => (
+            <a href={s.url} target="_blank" rel="noopener noreferrer"
+              key={s.label}
+              className="bg-[#0A0A0F] border border-[#252532] rounded-xl px-3 py-2.5 hover:border-[#00E5CC] transition-colors cursor-pointer">
+              <div className="font-display font-bold text-base leading-none text-[#FACC15]">
                 {s.val}
               </div>
-
-
-              <div className="
-                text-zinc-400
-                text-xs
-              ">
-                {s.label}
-              </div>
-
-
-            </div>
-
-
+              <div className="text-zinc-400 text-xs mt-1">{s.label}</div>
+            </a>
           ))}
 
 

@@ -96,15 +96,21 @@ export default function SelfPhotoPrice() {
           </div>
 
           {/* Tambahan */}
-          <div className="bg-white border border-[#C5F0EA] rounded-2xl p-6 max-w-sm">
-            <h2 className="font-display font-bold text-base text-main mb-4">Tambahan</h2>
-            <div className="space-y-3">
-              {EXTRAS.map(e => (
-                <div key={e.label} className="flex items-center justify-between text-sm">
-                  <span className="text-sub">{e.label}</span>
-                  <span className="font-semibold text-main">
-                    +Rp {e.price.toLocaleString('id-ID')}{e.suffix}
-                  </span>
+          <div className="mt-10">
+            <p className="font-display font-bold text-xl text-main mb-4">
+              Tambahan di Luar Paket
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {[
+                { name: 'Tambah Edit All Foto', price: '+Rp 25.000' },
+                { name: 'Tambah Waktu / 5 Menit', price: '+Rp 15.000' },
+                { name: 'Tambahan Orang', price: '+Rp 10.000/orang' },
+                { name: 'Spotlight', price: '+Rp 20.000' },
+              ].map((t, i) => (
+                <div key={i} className="bg-[#0A0A0F] border border-[#252532]
+                  rounded-2xl p-4 flex flex-col gap-2">
+                  <p className="text-white text-sm font-medium">{t.name}</p>
+                  <p className="font-display font-bold text-[#00E5CC] text-lg">{t.price}</p>
                 </div>
               ))}
             </div>

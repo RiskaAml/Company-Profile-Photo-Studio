@@ -1,17 +1,16 @@
-﻿import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
-import PhotoSlot from '../PhotoSlot'
 import useReveal from '../../hooks/useReveal'
 
-// ── ISI FOTO PREVIEW GALERI ───────────────────────────────────
-const ITEMS = [
-  { id:1, title:'Casual Portrait',  cat:'Portrait',  src:'', color:'text-rose-400' },
-  { id:2, title:'Squad Goals',      cat:'Self Photo', src:'', color:'text-sky-400' },
-  { id:3, title:'Couple Goals',     cat:'Couple',     src:'', color:'text-purple-400' },
-  { id:4, title:'Product Flatlay',  cat:'Produk',     src:'', color:'text-amber-400' },
-  { id:5, title:'Graduation',       cat:'Wisuda',     src:'', color:'text-emerald-400' },
-  { id:6, title:'Family Session',   cat:'Keluarga',   src:'', color:'text-fuchsia-400' },
-]
+const imgs = import.meta.glob('../../assets/gallery/*.{png,jpg,jpeg,webp,svg}',
+  { eager: true, query: '?url', import: 'default' })
+const img = (n) => imgs[`../../assets/gallery/${n}`] ?? ''
+
+const GALLERY = Array.from({ length: 30 }, (_, i) => ({
+  id: i + 1,
+  src: img(`gallery-${i + 1}.png`),
+  title: `Foto ${i + 1}`,
+}))
 
 export default function GalleryPreview() {
   const ref = useReveal()
@@ -20,7 +19,6 @@ export default function GalleryPreview() {
       <div className="container-x">
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <p className="reveal text-xs font-semibold text-mint-DEFAULT uppercase tracking-widest mb-3">— Pose Inspiration</p>
             <h2 className="reveal font-display font-bold text-2xl md:text-3xl text-main">
               Gak tau mau pose apa?<br />
               <span className="grad-text">Cek sini dulu.</span>
@@ -32,15 +30,11 @@ export default function GalleryPreview() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[180px] gap-3">
-          {ITEMS.map((item, i) => (
-            <Link to="/galeri" key={item.id}
-              className={`reveal group relative rounded-2xl overflow-hidden border border-[#C5F0EA] hover:border-mint-DEFAULT/50 transition-all ${i === 0 ? 'row-span-2' : ''}`}
+          {GALLERY.slice(0, 6).map((p, i) => (
+            <Link to="/galeri" key={p.id}
+              className={`reveal group relative rounded-2xl overflow-hidden border border-[#C5F0EA] hover:border-[#00E5CC] transition-all hover:shadow-md ${i === 0 ? 'row-span-2' : ''}`}
               style={{ transitionDelay: `${i * 60}ms` }}>
-              <PhotoSlot src={item.src} alt={item.title} className="w-full h-full rounded-none" />
-              {item.src && <div className="absolute inset-0 bg-d0/0 group-hover:bg-d0/30 transition-colors" />}
-              <div className="absolute bottom-3 left-3">
-                <span className={`text-xs font-bold px-2.5 py-1 rounded-lg backdrop-blur-sm bg-white/80 ${item.color}`}>{item.cat}</span>
-              </div>
+              <img src={p.src} alt={p.title} className="w-full h-full object-cover" />
             </Link>
           ))}
         </div>

@@ -1,11 +1,41 @@
-﻿import { MapPin, Clock, Phone } from 'lucide-react'
+﻿import { MapPin, Clock } from 'lucide-react'
 import useReveal from '../../hooks/useReveal'
 
-const LOCS = [
-  { id:1, name:'Sidoarjo Kota',    addr:'Jl. Raya Sidoarjo No. 123', hours:'Sen–Min 09.00–21.00', phone:'0812-3456-7890', badge:'Main Studio', badgeColor:'text-mint-DEFAULT bg-mint-DEFAULT/10 border-mint-DEFAULT/20', dot:'bg-mint-DEFAULT' },
-  { id:2, name:'Waru',             addr:'Jl. Raya Waru No. 45',      hours:'Sen–Min 09.00–21.00', phone:'0812-3456-7891', badge:null, dot:'bg-zinc-400' },
-  { id:3, name:'Gedangan',         addr:'Jl. Raya Gedangan No. 78',  hours:'Sel–Min 10.00–20.00', phone:'0812-3456-7892', badge:'New!', badgeColor:'text-pink bg-pink/10 border-pink/20', dot:'bg-pink' },
-  { id:4, name:'Surabaya Selatan', addr:'Jl. Raya Jemursari No. 12', hours:'Sen–Sab 10.00–21.00', phone:'0812-3456-7893', badge:null, dot:'bg-purple-DEFAULT' },
+const LOCATIONS = [
+  {
+    name: 'Lamongan Kota',
+    address: 'Ruko, Jl. Veteran No.33A, Mendalan, Banjarmendalan, Kec. Lamongan, Kabupaten Lamongan, Jawa Timur 62212',
+    hours: '08.20 – 20.00',
+    mapsUrl: 'https://maps.app.goo.gl/RQAriUJ4XNEDUSKd7',
+    badge: 'Buka Malam',
+    badgeColor: 'text-mint-DEFAULT bg-mint-DEFAULT/10 border-mint-DEFAULT/20',
+    dot: 'bg-mint-DEFAULT',
+  },
+  {
+    name: 'Bojonegoro',
+    address: 'RT.21/RW.05, Ngumpak, Ngumpak Dalem, Dander, Bojonegoro Regency, East Java 62171',
+    hours: '08.20 – 16.30',
+    mapsUrl: 'https://maps.app.goo.gl/w1po2BD1HQoxxhDQA',
+    badge: null,
+    dot: 'bg-purple-DEFAULT',
+  },
+  {
+    name: 'Dukun, Gresik',
+    address: 'Jl. Raya Dukun, Sembungan Kidul, Kec. Dukun, Kabupaten Gresik, Jawa Timur 61155',
+    hours: '08.20 – 16.30',
+    mapsUrl: 'https://maps.app.goo.gl/skEWKSbi2rnya7DRA',
+    badge: null,
+    dot: 'bg-pink',
+  },
+  {
+    name: 'Benjeng, Gresik',
+    address: 'Jalan raya, RT.16/RW.3, Karangpundut, Punduttrate, Kec. Benjeng, Kabupaten Gresik, Jawa Timur 61172',
+    hours: '08.20 – 16.30 (konfirmasi WA dulu)',
+    mapsUrl: 'https://maps.app.goo.gl/fUmuppC5quB36MvG7',
+    badge: 'Konfirmasi Dulu',
+    badgeColor: 'text-yellow bg-yellow/10 border-yellow/20',
+    dot: 'bg-yellow',
+  },
 ]
 
 export default function Locations() {
@@ -14,16 +44,14 @@ export default function Locations() {
     <section id="lokasi" ref={ref} className="section-y bg-[#F0FDFB]">
       <div className="container-x">
         <div className="mb-12">
-          <p className="reveal text-xs font-semibold text-mint-DEFAULT uppercase tracking-widest mb-3">— Find Us</p>
           <div className="reveal flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <h2 className="font-display font-bold text-2xl md:text-3xl text-main">Dekat dari mana saja.</h2>
-            <p className="text-sub text-sm max-w-xs">4 studio di Sidoarjo & Surabaya. Pilih yang paling dekat.</p>
+            <h2 className="font-display font-bold text-2xl md:text-3xl text-main">4 Studio Kami.</h2>
           </div>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          {LOCS.map((l, i) => (
-            <div key={l.id}
+          {LOCATIONS.map((l, i) => (
+            <div key={l.name}
               className="reveal bg-white border border-[#C5F0EA] rounded-2xl p-4 hover:border-mint-DEFAULT/40 transition-colors"
               style={{ transitionDelay: `${i * 60}ms` }}>
               <div className="flex items-center justify-between mb-3">
@@ -34,13 +62,10 @@ export default function Locations() {
                 {l.badge && <span className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${l.badgeColor}`}>{l.badge}</span>}
               </div>
               <div className="space-y-1.5 text-xs text-sub">
-                <div className="flex items-start gap-1.5"><MapPin size={11} className="mt-0.5 flex-shrink-0 text-mint-DEFAULT" /><span>{l.addr}</span></div>
+                <div className="flex items-start gap-1.5"><MapPin size={11} className="mt-0.5 flex-shrink-0 text-mint-DEFAULT" /><span>{l.address}</span></div>
                 <div className="flex items-center gap-1.5"><Clock size={11} className="flex-shrink-0 text-mint-DEFAULT" /><span>{l.hours}</span></div>
-                <div className="flex items-center gap-1.5"><Phone size={11} className="flex-shrink-0 text-mint-DEFAULT" />
-                  <a href={`https://wa.me/62${l.phone.replace(/\D/g,'').slice(1)}`} target="_blank" rel="noopener noreferrer" className="hover:text-mint-DEFAULT transition-colors">{l.phone}</a>
-                </div>
               </div>
-              <a href={`https://maps.google.com/?q=Dolananpoto+Studio+${l.name}`} target="_blank" rel="noopener noreferrer"
+              <a href={l.mapsUrl} target="_blank" rel="noopener noreferrer"
                 className="mt-3 block text-xs font-semibold text-mint-DEFAULT hover:underline">Open in Maps →</a>
             </div>
           ))}

@@ -61,6 +61,10 @@
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #00E5CC; border-radius: 4px; }
 
+/* Hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-behavior: none; }
+
 /* Tailwind color overrides */
 .bg-mint-DEFAULT { background-color: #00E5CC !important; }
 .text-d0         { color: #0A0A0F !important; }

@@ -24,13 +24,13 @@ const SERVICES = [
   {
     slug: 'rental',
     name: 'Rental Kamera',
-    desc: 'Mulai dari Rp 50.000 · Sewa mirrorless, DSLR, atau iPhone.',
+    desc: 'Mulai dari Rp 50.000 · Sewa mirrorless, DSLR, Lighting, bahkan alat alat streaming.',
     src: heroImg('layanan-3.png'),
   },
   {
     slug: 'video',
     name: 'Rental Iphone',
-    desc: 'Produksi video konten, reels, dan iklan produk. Cocok untuk UMKM, brand, dan kreator digital yang ingin tampil profesional.',
+    desc: ' Sewa iPhone terbaru untuk produksi konten, reels, dan iklan produk.',
     src: heroImg('layanan-4.png'),
   },
 ]
