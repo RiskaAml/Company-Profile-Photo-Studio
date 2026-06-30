@@ -1,7 +1,8 @@
 ﻿import { useParams, Link, useNavigate } from 'react-router-dom'
-import { ArrowLeft, MessageCircle, ChevronRight, Camera } from 'lucide-react'
+import { ArrowLeft, ChevronRight, Camera } from 'lucide-react'
 import PhotoSlot from '../components/PhotoSlot'
 import Footer from '../components/Footer'
+import CTA from '../components/sections/CTA'
 import { useAuth } from '../context/AuthContext'
 
 const imgs = import.meta.glob('../assets/*.{png,jpg,jpeg,webp,svg}', { eager: true, query: '?url', import: 'default' })
@@ -52,7 +53,7 @@ function PhotoshootDetail() {
 
           <div className="space-y-4">
             {HOW_TO_ORDER_STEPS.map((s, i) => (
-              <div key={s.step} className="flex gap-4 items-start bg-white border border-[#C5F0EA] rounded-2xl p-5 hover:border-[#A8E6DF] transition-colors">
+              <div key={s.step} className="flex gap-4 items-start bg-white border-2 border-zinc-300 rounded-2xl p-5 hover:border-zinc-400 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-mint-DEFAULT/20 to-purple-DEFAULT/20 flex items-center justify-center font-display font-bold text-mint-DEFAULT flex-shrink-0">
                   {s.step}
                 </div>
@@ -75,7 +76,7 @@ function PhotoshootDetail() {
               { name: 'Family/Group', price: 500000, unit: '3 jam', icon: '👨‍👩‍👧' },
               { name: 'Video Reels',  price: 350000, unit: '2 jam', icon: '🎬' },
             ].map(p => (
-              <div key={p.name} className={`border-2 rounded-2xl p-4 bg-white ${p.popular ? 'border-mint-DEFAULT glow-mint' : 'border-[#C5F0EA]'}`}>
+              <div key={p.name} className={`border-2 rounded-2xl p-4 bg-white ${p.popular ? 'border-mint-DEFAULT glow-mint' : 'border-zinc-300'}`}>
                 {p.popular && <div className="bg-mint-DEFAULT text-d0 text-xs font-bold text-center py-1 rounded-lg mb-3">⚡ Paling Populer</div>}
                 <div className="text-2xl mb-2">{p.icon}</div>
                 <div className="font-display font-bold text-sm text-main mb-1">{p.name}</div>
@@ -87,17 +88,8 @@ function PhotoshootDetail() {
           <p className="text-sub text-xs mt-3">* Harga final ditentukan setelah konsultasi sesuai kebutuhan kamu.</p>
         </div>
 
-        {/* CTA */}
-        <div className="bg-gradient-to-r from-purple-DEFAULT/10 to-mint-DEFAULT/10 border border-purple-DEFAULT/20 rounded-2xl p-8 text-center">
-          <h3 className="font-display font-bold text-xl text-main mb-2">Siap untuk sesi foto kamu?</h3>
-          <p className="text-sub text-sm mb-6 max-w-sm mx-auto">Konsultasi gratis, tanpa tekanan. Ceritakan konsep kamu dan kami bantu wujudkan.</p>
-          <a href="https://wa.me/6281234567890?text=Halo%20Dolananpoto%20Studio!%20Saya%20mau%20konsultasi%20untuk%20sesi%20Photoshoot."
-            target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-mint-DEFAULT text-d0 font-bold px-8 py-3 rounded-xl hover:bg-mint-dark transition-colors text-sm glow-mint">
-            <MessageCircle size={16} /> Hubungi Kami via WhatsApp
-          </a>
-        </div>
       </div>
+      <CTA />
       <Footer />
     </>
   )
@@ -130,16 +122,8 @@ function SelfPhotoDetail() {
           </Link>
         </div>
 
-        <div className="bg-gradient-to-r from-mint-DEFAULT/10 to-purple-DEFAULT/10 border border-mint-DEFAULT/20 rounded-2xl p-7 text-center">
-          <h3 className="font-display font-bold text-lg text-main mb-2">Bingung pilih paket?</h3>
-          <p className="text-sub text-sm mb-5">Konsultasi gratis, tanpa tekanan. Kami bantu pilihkan yang terbaik!</p>
-          <a href="https://wa.me/6281234567890?text=Halo%20Dolananpoto%20Studio%2C%20saya%20mau%20konsultasi%20paket%20Self%20Photo!"
-            target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-mint-DEFAULT text-d0 font-bold px-6 py-2.5 rounded-xl hover:bg-mint-dark transition-colors text-sm glow-mint">
-            <MessageCircle size={15} /> Konsultasi Gratis
-          </a>
-        </div>
       </div>
+      <CTA />
       <Footer />
     </>
   )
@@ -181,7 +165,7 @@ function RentalDetail() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {RENTAL_ITEMS.map(item => (
-            <div key={item.id} className={`border-2 rounded-2xl overflow-hidden bg-white transition-shadow hover:shadow-lg ${item.popular ? 'border-pink/60 shadow-pink/10' : 'border-[#C5F0EA]'}`}>
+            <div key={item.id} className={`border-2 rounded-2xl overflow-hidden bg-white transition-shadow hover:shadow-lg ${item.popular ? 'border-pink/60 shadow-pink/10' : 'border-zinc-300'}`}>
               {item.popular && <div className="bg-pink text-white text-xs font-bold text-center py-1.5">⚡ Paling Populer</div>}
               <div className="h-40 overflow-hidden">
                 <PhotoSlot src={img(item.img)} alt={item.name} className="w-full h-full rounded-none" />
@@ -202,7 +186,7 @@ function RentalDetail() {
                     { label: '4 Jam', price: item.price4h },
                     { label: 'Full Day', price: item.priceDay },
                   ].map(v => (
-                    <div key={v.label} className="text-center p-2 rounded-lg bg-white border border-zinc-100">
+                    <div key={v.label} className="text-center p-2 rounded-lg bg-white border border-zinc-300">
                       <div className="text-xs text-sub mb-0.5">{v.label}</div>
                       <div className="font-display font-bold text-xs text-main">Rp {v.price.toLocaleString('id-ID')}</div>
                     </div>
@@ -218,16 +202,8 @@ function RentalDetail() {
           ))}
         </div>
 
-        <div className="mt-10 bg-gradient-to-r from-pink/10 to-purple-DEFAULT/10 border border-pink/20 rounded-2xl p-7 text-center">
-          <h3 className="font-display font-bold text-lg text-main mb-2">Perlu rekomendasi alat?</h3>
-          <p className="text-sub text-sm mb-5">Ceritakan kebutuhan kamu dan kami bantu pilih yang paling cocok.</p>
-          <a href="https://wa.me/6281234567890?text=Halo%20Dolananpoto%20Studio!%20Saya%20mau%20tanya%20soal%20rental%20kamera."
-            target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-mint-DEFAULT text-d0 font-bold px-6 py-2.5 rounded-xl hover:bg-mint-dark transition-colors text-sm glow-mint">
-            <MessageCircle size={15} /> Tanya via WhatsApp
-          </a>
-        </div>
       </div>
+      <CTA />
       <Footer />
     </>
   )

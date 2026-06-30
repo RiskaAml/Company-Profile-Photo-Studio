@@ -50,7 +50,7 @@ export default function Services() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {SERVICES.map((s, i) => (
             <div key={s.slug}
-              className="reveal group bg-white border border-[#C5F0EA] rounded-2xl overflow-hidden hover:border-[#A8E6DF] hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+              className="reveal group bg-white border-2 border-zinc-300 rounded-2xl overflow-hidden hover:border-zinc-400 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
               style={{ transitionDelay: `${i * 80}ms` }}>
               <div className="aspect-square overflow-hidden relative">
                 <PhotoSlot src={s.src} alt={s.name} className="w-full h-full rounded-none" />

@@ -9,7 +9,6 @@ const logoSrc = assetGlob['../assets/logo.png'] ?? ''
 
 const NAV = [
   { label: 'Layanan',   href: '/#layanan' },
-  { label: 'Ruangan',   href: '/#ruangan' },
   { label: 'Galeri',    href: '/galeri' },
   { label: 'Testimoni', href: '/#testimoni' },
   { label: 'Lokasi',    href: '/#lokasi' },

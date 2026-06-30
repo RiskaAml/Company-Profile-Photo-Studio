@@ -37,14 +37,14 @@ export default function InvoicePage() {
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3 mb-6 flex items-start gap-3">
           <MessageCircle size={18} className="text-emerald-600 flex-shrink-0 mt-0.5" />
           <p className="text-sm text-emerald-700">
-            Invoice akan dikirim ke <strong>WhatsApp kamu</strong> dalam beberapa menit. (Simulasi — tidak ada WA sungguhan yang dikirim)
+            Invoice akan dikirim ke <strong>WhatsApp kamu</strong> dalam beberapa menit. 
           </p>
         </div>
 
         {/* Invoice card */}
-        <div className="bg-white border border-[#C5F0EA] rounded-2xl overflow-hidden">
+        <div className="bg-white border-2 border-zinc-300 rounded-2xl overflow-hidden">
           {/* Invoice header */}
-          <div className="bg-gradient-to-r from-mint-DEFAULT/10 to-purple-DEFAULT/10 border-b border-[#C5F0EA] px-6 py-5">
+          <div className="bg-gradient-to-r from-mint-DEFAULT/10 to-purple-DEFAULT/10 border-b border-zinc-200 px-6 py-5">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-sub font-medium uppercase tracking-wider">Invoice</p>
@@ -81,7 +81,7 @@ export default function InvoicePage() {
                 <span className="text-main text-sm text-right max-w-[60%]">{notes}</span>
               </div>
             )}
-            <div className="flex justify-between items-center border-t border-[#C5F0EA] pt-3 mt-3">
+            <div className="flex justify-between items-center border-t border-zinc-200 pt-3 mt-3">
               <span className="font-display font-bold text-main">Total</span>
               <span className="font-display font-bold text-xl text-mint-DEFAULT">Rp {total.toLocaleString('id-ID')}</span>
             </div>
@@ -92,7 +92,7 @@ export default function InvoicePage() {
         {/* Actions */}
         <div className="mt-6">
           <Link to="/"
-            className="w-full flex items-center justify-center gap-2 border border-[#C5F0EA] text-main font-semibold text-sm py-2.5 rounded-xl hover:border-[#A8E6DF] transition-colors">
+            className="w-full flex items-center justify-center gap-2 border-2 border-zinc-300 text-main font-semibold text-sm py-2.5 rounded-xl hover:border-zinc-400 transition-colors">
             <Home size={15} /> Kembali ke Beranda
           </Link>
         </div>

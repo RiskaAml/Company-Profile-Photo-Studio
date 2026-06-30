@@ -57,25 +57,13 @@ export default function Hero() {
 
       {/* decoration */}
       <div className="
-        absolute 
-        -left-40 
-        bottom-10 
-        w-96 
-        h-96 
-        bg-[#BDF7EE]/40 
-        rounded-full 
-        blur-3xl
-      "/>
-
-
-      <div className="
-        absolute 
-        top-20 
-        right-0 
-        w-72 
-        h-72 
-        bg-[#FFD6E8]/30 
-        rounded-full 
+        absolute
+        top-20
+        right-0
+        w-72
+        h-72
+        bg-[#FFD6E8]/30
+        rounded-full
         blur-3xl
       "/>
 
@@ -103,7 +91,7 @@ export default function Hero() {
             gap-2 
             bg-white
             border
-            border-[#BDF7EE]
+            border-zinc-200
             px-4 
             py-2 
             rounded-full 
@@ -163,7 +151,7 @@ export default function Hero() {
             bg-white
             rounded-2xl
             border
-            border-[#DDF6F2]
+            border-zinc-200
             p-4
             grid
             grid-cols-2
@@ -313,7 +301,7 @@ export default function Hero() {
           rounded-3xl
           overflow-hidden
           border
-          border-[#C5F0EA]
+          border-zinc-300
           shadow-xl
         "
         style={{

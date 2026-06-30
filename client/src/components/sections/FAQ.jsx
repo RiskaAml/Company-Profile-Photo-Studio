@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { ChevronDown } from 'lucide-react'
 import useReveal from '../../hooks/useReveal'
 
 const FAQS = [
@@ -53,6 +55,10 @@ const FAQS = [
 
 export default function FAQ() {
   const ref = useReveal()
+  const [openIdx, setOpenIdx] = useState(null)
+  const [showAll, setShowAll] = useState(false)
+
+  const visible = showAll ? FAQS : FAQS.slice(0, 5)
 
   return (
     <section id="faq" ref={ref} className="section-y bg-[#F0FDFB]">
@@ -63,13 +69,44 @@ export default function FAQ() {
           </div>
         </div>
 
-        <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-          {FAQS.map((faq, i) => (
-            <div key={i} className="bg-[#0A0A0F] border border-[#252532] rounded-2xl p-4 flex-shrink-0 w-72">
-              <p className="font-bold text-sm text-[#FACC15] mb-1">{faq.q}</p>
-              <p className="text-sm text-white leading-relaxed">{faq.a}</p>
-            </div>
-          ))}
+        <div className="flex flex-col gap-2 max-w-2xl mx-auto">
+          {visible.map((faq, i) => {
+            const isOpen = openIdx === i
+            return (
+              <div key={i} className="bg-[#0A0A0F] border border-[#252532] rounded-lg overflow-hidden">
+                <button
+                  onClick={() => setOpenIdx(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between px-4 py-4 text-left">
+                  <span className="font-bold text-sm text-[#FACC15] pr-3">{faq.q}</span>
+                  <ChevronDown
+                    size={16}
+                    className={`text-white flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                  />
+                </button>
+                {isOpen && (
+                  <div className="px-4 pb-4">
+                    <p className="text-sm text-white leading-relaxed">{faq.a}</p>
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </div>
+
+        <div className="max-w-2xl mx-auto">
+          {!showAll ? (
+            <button
+              onClick={() => setShowAll(true)}
+              className="mt-4 text-sm font-semibold text-mint-DEFAULT hover:underline">
+              Lihat Semua ({FAQS.length})
+            </button>
+          ) : (
+            <button
+              onClick={() => { setShowAll(false); setOpenIdx(null) }}
+              className="mt-4 text-sm font-semibold text-mint-DEFAULT hover:underline">
+              Sembunyikan
+            </button>
+          )}
         </div>
       </div>
     </section>

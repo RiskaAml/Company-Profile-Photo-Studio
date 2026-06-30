@@ -1,4 +1,4 @@
-﻿import { createContext, useContext, useState } from 'react'
+﻿import { createContext, useContext, useState, useEffect } from 'react'
 
 const AuthCtx = createContext()
 
@@ -13,10 +13,17 @@ const REGISTERED = [
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
 
+  useEffect(() => {
+    const saved = localStorage.getItem('dp-user')
+    if (saved) setUser(JSON.parse(saved))
+  }, [])
+
   const login = (email, password) => {
     const found = REGISTERED.find(u => u.email === email && u.password === password)
     if (!found) return { ok: false, error: 'Email atau password salah.' }
-    setUser({ email: found.email, name: found.name, isAdmin: found.isAdmin || false })
+    const userData = { email: found.email, name: found.name, isAdmin: found.isAdmin || false }
+    setUser(userData)
+    localStorage.setItem('dp-user', JSON.stringify(userData))
     return { ok: true }
   }
 
@@ -26,11 +33,16 @@ export function AuthProvider({ children }) {
     }
     const newUser = { email, password, name, isAdmin: false }
     REGISTERED.push(newUser)
-    setUser({ email, name, isAdmin: false })
+    const userData = { email, name, isAdmin: false }
+    setUser(userData)
+    localStorage.setItem('dp-user', JSON.stringify(userData))
     return { ok: true }
   }
 
-  const logout = () => setUser(null)
+  const logout = () => {
+    localStorage.removeItem('dp-user')
+    setUser(null)
+  }
 
   // Simulated OTP: always "123456" for any email
   const requestOtp = (email) => {

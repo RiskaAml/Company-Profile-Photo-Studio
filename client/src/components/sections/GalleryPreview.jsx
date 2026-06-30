@@ -10,14 +10,14 @@ const GALLERY = Array.from({ length: 30 }, (_, i) => ({
   id: i + 1,
   src: img(`gallery-${i + 1}.png`),
   title: `Foto ${i + 1}`,
-}))
+})).filter(p => p.id !== 13 && p.id !== 30)
 
 export default function GalleryPreview() {
   const ref = useReveal()
   return (
-    <section id="galeri" ref={ref} className="section-y bg-[#F0FDFB]">
+    <section id="galeri" ref={ref} className="py-8 bg-[#F0FDFB]">
       <div className="container-x">
-        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <h2 className="reveal font-display font-bold text-2xl md:text-3xl text-main">
               Gak tau mau pose apa?<br />
@@ -29,14 +29,16 @@ export default function GalleryPreview() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[180px] gap-3">
-          {GALLERY.slice(0, 6).map((p, i) => (
+        <div className="max-h-[420px] overflow-hidden">
+        <div className="columns-3 sm:columns-4 lg:columns-6 gap-2 space-y-2">
+          {GALLERY.slice(0, 30).map((p, i) => (
             <Link to="/galeri" key={p.id}
-              className={`reveal group relative rounded-2xl overflow-hidden border border-[#C5F0EA] hover:border-[#00E5CC] transition-all hover:shadow-md ${i === 0 ? 'row-span-2' : ''}`}
-              style={{ transitionDelay: `${i * 60}ms` }}>
-              <img src={p.src} alt={p.title} className="w-full h-full object-cover" />
+              className="reveal break-inside-avoid block rounded-md overflow-hidden border-2 border-zinc-300 hover:border-[#00E5CC] transition-all hover:shadow-md"
+              style={{ transitionDelay: `${i * 40}ms` }}>
+              <img src={p.src} alt={p.title} className="w-full h-auto object-cover" />
             </Link>
           ))}
+        </div>
         </div>
       </div>
     </section>

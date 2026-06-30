@@ -29,12 +29,12 @@ export default function Testimonials() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {REVIEWS.map((r, i) => (
             <div key={r.id}
-              className="reveal bg-[#F0FDFB] border border-[#C5F0EA] rounded-2xl p-5 hover:border-[#A8E6DF] transition-colors"
+              className="reveal bg-white border-2 border-zinc-300 rounded-xl p-3 hover:border-zinc-400 transition-colors"
               style={{ transitionDelay: `${i * 60}ms` }}>
-              <div className="flex gap-0.5 mb-3">
-                {[...Array(r.rating)].map((_,j)=><span key={j} className="text-yellow text-sm">★</span>)}
+              <div className="flex gap-0.5 mb-2">
+                {[...Array(r.rating)].map((_,j)=><span key={j} className="text-yellow text-xs">★</span>)}
               </div>
-              <p className="text-main text-sm leading-relaxed mb-4">"{r.text}"</p>
+              <p className="text-main text-xs leading-relaxed mb-3">"{r.text}"</p>
               <div className="flex items-center justify-between pt-3 border-t border-[#C5F0EA]">
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-mint-DEFAULT/30 to-purple-DEFAULT/30 text-main font-display font-bold text-sm flex items-center justify-center flex-shrink-0">

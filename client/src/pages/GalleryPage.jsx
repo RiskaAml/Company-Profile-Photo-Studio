@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { X, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import Footer from '../components/Footer'
+import CTA from '../components/sections/CTA'
 
 const imgs = import.meta.glob('../assets/gallery/*.{png,jpg,jpeg,webp,svg}',
   { eager: true, query: '?url', import: 'default' })
@@ -31,21 +32,11 @@ export default function GalleryPage() {
         <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-3">
           {GALLERY.map((p, i) => (
             <div key={p.id}
-              className="break-inside-avoid rounded-2xl overflow-hidden cursor-pointer border border-[#C5F0EA] hover:border-[#00E5CC] transition-all hover:shadow-md"
+              className="break-inside-avoid rounded-md overflow-hidden cursor-pointer border-2 border-zinc-300 hover:border-[#00E5CC] transition-all hover:shadow-md"
               onClick={() => setLightbox(i)}>
-              <img src={p.src} alt={p.title} className="w-full h-full object-cover" />
+              <img src={p.src} alt={p.title} className="w-full h-auto object-cover" />
             </div>
           ))}
-        </div>
-
-        <div className="mt-14 bg-gradient-to-r from-mint-DEFAULT/10 to-purple-DEFAULT/10 border border-mint-DEFAULT/20 rounded-2xl p-8 text-center">
-          <h3 className="font-display font-bold text-lg text-main mb-2">Ada konsep foto sendiri?</h3>
-          <p className="text-sub text-sm mb-5">Ceritakan ke kami — konsultasi gratis!</p>
-          <a href="https://wa.me/6281234567890?text=Halo%20AF%20Studio%2C%20saya%20mau%20konsultasi%20konsep%20foto!"
-            target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-mint-DEFAULT text-d0 font-bold px-6 py-2.5 rounded-xl hover:bg-mint-dark transition-colors text-sm glow-mint">
-            <MessageCircle size={15} /> Chat Sekarang
-          </a>
         </div>
       </div>
 
@@ -58,6 +49,7 @@ export default function GalleryPage() {
           <div className="absolute bottom-4 text-white/40 text-xs">{lightbox + 1} / {GALLERY.length}</div>
         </div>
       )}
+      <CTA />
       <Footer />
     </>
   )
