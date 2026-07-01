@@ -50,10 +50,10 @@ export default function Locations() {
   return (
     <section id="lokasi" ref={ref} className="section-y bg-[#F0FDFB]">
       <div className="container-x">
-        <div className="mb-12">
-          <div className="reveal flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <h2 className="font-display font-bold text-2xl md:text-3xl text-main">4 Studio Kami.</h2>
-          </div>
+        <div className="mb-8 md:mb-12">
+          <p className="text-xs font-semibold text-[#00E5CC] uppercase tracking-widest mb-3">— LOKASI</p>
+          <h2 className="font-display font-bold text-2xl md:text-3xl text-main mb-2">Studio kami ada di dekatmu.</h2>
+          <p className="text-sub text-sm max-w-lg">4 lokasi di Gresik, Lamongan, dan Bojonegoro.</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">

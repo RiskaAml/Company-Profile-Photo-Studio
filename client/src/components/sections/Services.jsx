@@ -41,10 +41,10 @@ export default function Services() {
   return (
     <section id="layanan" ref={ref} className="section-y bg-[#F0FDFB]">
       <div className="container-x">
-        <div className="mb-12">
-          <div className="reveal flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <h2 className="font-display font-bold text-2xl md:text-3xl text-main">4 Layanan Dolananpoto Studio</h2>
-          </div>
+        <div className="mb-8 md:mb-12">
+          <p className="text-xs font-semibold text-[#00E5CC] uppercase tracking-widest mb-3">— LAYANAN</p>
+          <h2 className="font-display font-bold text-2xl md:text-3xl text-main mb-2">Mau foto apa hari ini?</h2>
+          <p className="text-sub text-sm max-w-lg">Pilih layanan yang paling cocok sama kebutuhan kamu.</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">

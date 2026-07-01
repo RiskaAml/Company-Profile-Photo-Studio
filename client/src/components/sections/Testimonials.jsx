@@ -14,11 +14,14 @@ export default function Testimonials() {
   return (
     <section id="testimoni" ref={ref} className="section-y bg-white">
       <div className="container-x">
-        <div className="mb-12">
-          <p className="reveal text-xs font-semibold text-mint-DEFAULT uppercase tracking-widest mb-3">— What They Say</p>
+        <div className="mb-8 md:mb-12">
+          <p className="text-xs font-semibold text-[#00E5CC] uppercase tracking-widest mb-3">— TESTIMONI</p>
           <div className="reveal flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <h2 className="font-display font-bold text-2xl md:text-3xl text-main">Kata mereka.</h2>
-            <div className="flex items-center gap-2">
+            <div>
+              <h2 className="font-display font-bold text-2xl md:text-3xl text-main mb-2">Jangan percaya kami dulu.</h2>
+              <p className="text-sub text-sm max-w-lg">Baca dulu kata mereka yang sudah pernah foto di sini.</p>
+            </div>
+            <div className="flex items-center gap-2 flex-shrink-0">
               <div className="flex gap-0.5">{[...Array(5)].map((_,i)=><span key={i} className="text-yellow text-base">★</span>)}</div>
               <span className="font-display font-bold text-main">4.9</span>
               <span className="text-sub text-sm">· 1.000+ ulasan</span>

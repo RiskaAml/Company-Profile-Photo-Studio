@@ -63,10 +63,10 @@ export default function FAQ() {
   return (
     <section id="faq" ref={ref} className="section-y bg-[#F0FDFB]">
       <div className="container-x">
-        <div className="mb-12">
-          <div className="reveal">
-            <h2 className="font-display font-bold text-2xl md:text-3xl text-main">Pertanyaan yang sering ditanyakan.</h2>
-          </div>
+        <div className="mb-8 md:mb-12">
+          <p className="text-xs font-semibold text-[#00E5CC] uppercase tracking-widest mb-3">— FAQ</p>
+          <h2 className="font-display font-bold text-2xl md:text-3xl text-main mb-2">Ada yang mau ditanyain?</h2>
+          <p className="text-sub text-sm max-w-lg">Mungkin pertanyaanmu sudah mimin jawab di bawah ini.</p>
         </div>
 
         <div className="flex flex-col gap-2 max-w-2xl mx-auto">
