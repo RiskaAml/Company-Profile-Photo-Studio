@@ -230,29 +230,11 @@ export default function Hero() {
           ">
 
 
-          <a
-          href="https://wa.me/6281234567890"
-          target="_blank"
-          className="
-            flex
-            items-center
-            gap-2
-            bg-[#10CDB8]
-            hover:bg-[#08bba7]
-            text-black
-            font-bold
-            px-7
-            py-3
-            rounded-xl
-            transition
-          "
-          >
-
-            Book Sekarang
-
-            <ArrowRight size={16}/>
-
-          </a>
+          <button
+            onClick={() => document.getElementById('layanan')?.scrollIntoView({ behavior: 'smooth' })}
+            className="flex items-center gap-2 bg-[#00E5CC] text-[#0A0A0F] font-bold px-6 py-2.5 rounded-xl transition-colors text-sm hover:bg-[#00B3A0]">
+            Book Sekarang <ArrowRight size={15} />
+          </button>
 
 
           </div>

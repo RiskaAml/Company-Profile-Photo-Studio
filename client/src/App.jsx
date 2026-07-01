@@ -13,6 +13,9 @@ import InvoicePage from './pages/InvoicePage'
 import OrderHistoryPage from './pages/OrderHistoryPage'
 import AdminPage from './pages/AdminPage'
 import SelfPhotoPrice from './pages/SelfPhotoPrice'
+import RentalCameraPrice from './pages/RentalCameraPrice'
+import RentalIphonePage from './pages/RentalIphonePage'
+import RentalIphoneBookingPage from './pages/RentalIphoneBookingPage'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { BookingProvider } from './context/BookingContext'
 
@@ -38,6 +41,8 @@ function AppRoutes() {
         <Route path="/"                element={<Home />} />
         <Route path="/layanan/:slug"   element={<ServiceDetail />} />
         <Route path="/selfphoto-harga" element={<SelfPhotoPrice />} />
+        <Route path="/rental-kamera"        element={<RentalCameraPrice />} />
+        <Route path="/layanan/rental-iphone" element={<RentalIphonePage />} />
         <Route path="/galeri"          element={<GalleryPage />} />
         <Route path="/masuk"           element={<LoginPage />} />
         <Route path="/daftar"          element={<SignUpPage />} />
@@ -48,6 +53,9 @@ function AppRoutes() {
         />
         <Route path="/booking/rental"
           element={<RequireAuth><RentalBookingPage /></RequireAuth>}
+        />
+        <Route path="/booking/rental-iphone"
+          element={<RequireAuth><RentalIphoneBookingPage /></RequireAuth>}
         />
         <Route path="/riwayat"
           element={<RequireAuth><OrderHistoryPage /></RequireAuth>}

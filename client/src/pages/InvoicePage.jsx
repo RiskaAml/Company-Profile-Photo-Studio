@@ -83,7 +83,7 @@ export default function InvoicePage() {
             )}
             <div className="flex justify-between items-center border-t border-zinc-200 pt-3 mt-3">
               <span className="font-display font-bold text-main">Total</span>
-              <span className="font-display font-bold text-xl text-mint-DEFAULT">Rp {total.toLocaleString('id-ID')}</span>
+              <span className="font-display font-bold text-xl text-mint-DEFAULT">Rp {(total ?? 0).toLocaleString('id-ID')}</span>
             </div>
           </div>
 

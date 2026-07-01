@@ -5,78 +5,37 @@ import { useBooking } from '../context/BookingContext'
 import { useAuth } from '../context/AuthContext'
 
 const ITEMS = [
-  { id: 'saramonic-b1',          name: 'Saramonic B1',            cat: 'aksesoris-audio',    img: 'aksesoris-audio-1.png',
-    variants: [{ label: '24 Jam', price: 50000 }] },
-  { id: 'mic-tnw-a30',           name: 'Mic TNW A30',             cat: 'aksesoris-audio',    img: 'aksesoris-audio-2.png',
-    variants: [{ label: '24 Jam', price: 40000 }] },
-  { id: 'recorder-zoom-h1n',     name: 'Recorder Zoom H1N',       cat: 'aksesoris-audio',    img: 'aksesoris-audio-3.png',
-    variants: [{ label: '24 Jam', price: 50000 }] },
-  { id: 'flash-tt600',           name: 'Flash TT600',             cat: 'aksesoris-lighting', img: 'aksesoris-lighting-1.png',
-    variants: [{ label: '24 Jam', price: 35000 }] },
-  { id: 'flash-yongnuo',         name: 'Flash Yongnuo',           cat: 'aksesoris-lighting', img: 'aksesoris-lighting-2.png',
-    variants: [{ label: '24 Jam', price: 30000 }] },
-  { id: 'trigger-x1t',           name: 'Trigger X1T',             cat: 'aksesoris-lighting', img: 'aksesoris-lighting-3.png',
-    variants: [{ label: '24 Jam', price: 30000 }] },
-  { id: 'trigger-universal',     name: 'Trigger Universal',       cat: 'aksesoris-lighting', img: 'aksesoris-lighting-4.png',
-    variants: [{ label: '24 Jam', price: 25000 }] },
-  { id: 'lightstand',            name: 'Lightstand',              cat: 'aksesoris-lighting', img: 'aksesoris-lighting-5.png',
+  // JAM-JAMAN
+  { id: 'iphone-x-jj',     name: 'iPhone X',      cat: 'jam-jaman', img: 'iphone/iphone-x.png',
+    variants: [{ label: '3 Jam', price: 30000 }, { label: '6 Jam', price: 50000 }, { label: '12 Jam', price: 65000 }] },
+  { id: 'iphone-xr-jj',    name: 'iPhone XR',     cat: 'jam-jaman', img: 'iphone/iphone-xr.png',
+    variants: [{ label: '3 Jam', price: 40000 }, { label: '6 Jam', price: 60000 }, { label: '12 Jam', price: 85000 }] },
+  { id: 'iphone-11-jj',    name: 'iPhone 11',     cat: 'jam-jaman', img: 'iphone/iphone-11.png',
+    variants: [{ label: '3 Jam', price: 45000 }, { label: '6 Jam', price: 75000 }, { label: '12 Jam', price: 100000 }] },
+  { id: 'iphone-11pro-jj', name: 'iPhone 11 Pro', cat: 'jam-jaman', img: 'iphone/iphone-11-pro.png',
+    variants: [{ label: '3 Jam', price: 50000 }, { label: '6 Jam', price: 85000 }, { label: '12 Jam', price: 110000 }] },
+  { id: 'iphone-13-jj',    name: 'iPhone 13',     cat: 'jam-jaman', img: 'iphone/iphone-13.png',
+    variants: [{ label: '6 Jam', price: 100000 }, { label: '12 Jam', price: 140000 }] },
+
+  // HARIAN
+  { id: 'iphone-x-h',     name: 'iPhone X',      cat: 'harian', img: 'iphone/iphone-x.png',
+    variants: [{ label: '24 Jam', price: 80000 }, { label: '1,5 Hari', price: 130000 }, { label: '2 Hari', price: 150000 }, { label: '3 Hari', price: 220000 }, { label: '5 Hari', price: 320000 }] },
+  { id: 'iphone-xr-h',    name: 'iPhone XR',     cat: 'harian', img: 'iphone/iphone-xr.png',
+    variants: [{ label: '24 Jam', price: 100000 }, { label: '1,5 Hari', price: 170000 }, { label: '2 Hari', price: 190000 }, { label: '3 Hari', price: 260000 }, { label: '5 Hari', price: 400000 }] },
+  { id: 'iphone-11-h',    name: 'iPhone 11',     cat: 'harian', img: 'iphone/iphone-11.png',
+    variants: [{ label: '24 Jam', price: 130000 }, { label: '1,5 Hari', price: 220000 }, { label: '2 Hari', price: 250000 }, { label: '3 Hari', price: 350000 }, { label: '5 Hari', price: 520000 }] },
+  { id: 'iphone-11pro-h', name: 'iPhone 11 Pro', cat: 'harian', img: 'iphone/iphone-11-pro.png',
+    variants: [{ label: '24 Jam', price: 140000 }, { label: '1,5 Hari', price: 230000 }, { label: '2 Hari', price: 270000 }, { label: '3 Hari', price: 370000 }, { label: '5 Hari', price: 550000 }] },
+  { id: 'iphone-13-h',    name: 'iPhone 13',     cat: 'harian', img: 'iphone/iphone-13.png',
+    variants: [{ label: '24 Jam', price: 180000 }, { label: '1,5 Hari', price: 300000 }, { label: '2 Hari', price: 330000 }, { label: '3 Hari', price: 500000 }, { label: '5 Hari', price: 700000 }] },
+
+  // AKSESORIS
+  { id: 'powerbank',     name: 'Powerbank',   cat: 'aksesoris', img: 'iphone-aksesoris/powerbank.png',
     variants: [{ label: '24 Jam', price: 10000 }] },
-  { id: 'tripod',                name: 'Tripod',                  cat: 'aksesoris-lighting', img: 'aksesoris-lighting-6.png',
-    variants: [{ label: '24 Jam', price: 30000 }] },
-  { id: 'softbox-90cm',          name: 'Softbox 90cm',            cat: 'aksesoris-lighting', img: 'aksesoris-lighting-7.png',
-    variants: [{ label: '24 Jam', price: 40000 }] },
-  { id: 'lampu-sorot-hinomaru',  name: 'Lampu Sorot Hinomaru',    cat: 'aksesoris-lighting', img: 'aksesoris-lighting-8.png',
-    variants: [{ label: '24 Jam', price: 15000 }] },
-  { id: 'baterai-flash-charger', name: 'Baterai Flash + Charger', cat: 'aksesoris-lighting', img: 'aksesoris-lighting-9.png',
+  { id: 'lensa-apexi',   name: 'Lensa Apexi', cat: 'aksesoris', img: 'iphone-aksesoris/lensa-apexi.png',
     variants: [{ label: '24 Jam', price: 20000 }] },
-  { id: 'memory-card',           name: 'Memory Card',             cat: 'aksesoris-lighting', img: 'aksesoris-lighting-10.png',
-    variants: [{ label: '24 Jam', price: 10000 }] },
-  { id: 'atem-mini-pro',         name: 'ATEM Mini PRO',           cat: 'alat-streaming',     img: 'alat-streaming-1.png',
-    variants: [{ label: '12 Jam', price: 160000 }, { label: '24 Jam', price: 180000 }] },
-  { id: 'video-wireless-whdi-c1',name: 'Video Wireless WHDI C1',  cat: 'alat-streaming',     img: 'alat-streaming-2.png',
-    variants: [{ label: '12 Jam', price: 85000 }, { label: '24 Jam', price: 100000 }] },
-  { id: 'monitor-vitrox-dc70ii', name: 'Monitor Vitrox DC70II',   cat: 'alat-streaming',     img: 'alat-streaming-3.png',
-    variants: [{ label: '12 Jam', price: 85000 }, { label: '24 Jam', price: 100000 }] },
-  { id: 'paket-atem-layar',      name: 'Paket Atem + Layar',      cat: 'alat-streaming',     img: 'alat-streaming-4.png',
-    variants: [{ label: '12 Jam', price: 225000 }, { label: '24 Jam', price: 250000 }] },
-  { id: 'canon-1100d-kit',       name: 'Canon 1100D + Kit',       cat: 'canon-dslr',         img: 'canon-dslr-1.png',
-    variants: [{ label: '24 Jam (Weekday)', price: 60000 }, { label: '24 Jam (Weekend)', price: 70000 }] },
-  { id: 'canon-700d-kit',        name: 'Canon 700D + Kit',        cat: 'canon-dslr',         img: 'canon-dslr-2.png',
-    variants: [{ label: '24 Jam (Weekday)', price: 80000 }, { label: '24 Jam (Weekend)', price: 90000 }] },
-  { id: 'canon-1200d-kit',       name: 'Canon 1200D + Kit',       cat: 'canon-dslr',         img: 'canon-dslr-3.png',
-    variants: [{ label: '24 Jam (Weekday)', price: 70000 }, { label: '24 Jam (Weekend)', price: 80000 }] },
-  { id: 'canon-efek-false-color',name: 'Canon Efek False Color',  cat: 'canon-dslr',         img: 'canon-dslr-4.png',
-    variants: [{ label: '24 Jam (Weekday)', price: 85000 }, { label: '24 Jam (Weekend)', price: 95000 }] },
-  { id: 'canon-600d-kit',        name: 'Canon 600D + Kit',        cat: 'canon-dslr',         img: 'canon-dslr-5.png',
-    variants: [{ label: '24 Jam (Weekday)', price: 75000 }, { label: '24 Jam (Weekend)', price: 85000 }] },
-  { id: 'canon-60d',             name: 'Canon 60D',               cat: 'canon-dslr',         img: 'canon-dslr-6.png',
-    variants: [{ label: '24 Jam (Weekday)', price: 90000 }, { label: '24 Jam (Weekend)', price: 95000 }] },
-  { id: 'dji-mini-3',            name: 'DJI Mini 3',              cat: 'drone',              img: 'drone-1.png',
-    variants: [{ label: '12 Jam', price: 350000 }, { label: '24 Jam', price: 400000 }] },
-  { id: 'dji-spark',             name: 'DJI Spark',               cat: 'drone',              img: 'drone-2.png',
-    variants: [{ label: '12 Jam', price: 250000 }, { label: '24 Jam', price: 300000 }] },
-  { id: 'dji-mini-3-pilot',      name: 'DJI Mini 3 + Pilot',      cat: 'drone',              img: 'drone-3.png',
-    variants: [{ label: 'Info lebih lanjut WA', price: 500000 }] },
-  { id: 'sony-a7ii-bo',          name: 'Sony A7II BO',            cat: 'fullframe',          img: 'fullframe-1.png',
-    variants: [{ label: '12 Jam', price: 150000 }, { label: '24 Jam', price: 175000 }] },
-  { id: 'eos-canon-6d-bo',       name: 'EOS Canon 6D BO',         cat: 'fullframe',          img: 'fullframe-2.png',
-    variants: [{ label: '6 Jam', price: 150000 }, { label: '12 Jam', price: 150000 }, { label: '24 Jam', price: 175000 }] },
-  { id: 'eos-rp-bo',             name: 'EOS RP BO',               cat: 'fullframe',          img: 'fullframe-3.png',
-    variants: [{ label: '12 Jam', price: 175000 }, { label: '24 Jam', price: 200000 }] },
-  { id: 'eos-rp-adaptor',        name: 'EOS RP + Adaptor',        cat: 'fullframe',          img: 'fullframe-4.png',
-    variants: [{ label: '12 Jam', price: 195000 }, { label: '24 Jam', price: 225000 }] },
-  { id: 'nikon-z6-bo',           name: 'Nikon Z6 BO',             cat: 'fullframe',          img: 'fullframe-5.png',
-    variants: [{ label: '12 Jam', price: 220000 }, { label: '24 Jam', price: 250000 }] },
-  { id: 'nikon-z6-adaptor',      name: 'Nikon Z6 + Adaptor',      cat: 'fullframe',          img: 'fullframe-6.png',
-    variants: [{ label: '12 Jam', price: 250000 }, { label: '24 Jam', price: 280000 }] },
-  { id: 'canon-1200d-kit-jj',    name: 'Canon 1200D + Kit',       cat: 'jamjaman',           img: 'jamjaman-1.png',
-    variants: [{ label: '3 Jam', price: 30000 }, { label: '6 Jam', price: 50000 }] },
-  { id: 'canon-600d-jj',         name: 'Canon 600D',              cat: 'jamjaman',           img: 'jamjaman-2.png',
-    variants: [{ label: '3 Jam', price: 30000 }, { label: '6 Jam', price: 50000 }] },
-  { id: 'canon-600d-fix50mm',    name: 'Canon 600D + Fix 50mm',   cat: 'jamjaman',           img: 'jamjaman-3.png',
-    variants: [{ label: '3 Jam', price: 40000 }, { label: '6 Jam', price: 60000 }] },
-  { id: 'canon-efek-kit',        name: 'Canon Efek + Kit',        cat: 'jamjaman',           img: 'jamjaman-4.png',
-    variants: [{ label: '3 Jam', price: 30000 }, { label: '6 Jam', price: 50000 }] },
+  { id: 'tripod-iphone', name: 'Tripod',       cat: 'aksesoris', img: 'iphone-aksesoris/tripod.png',
+    variants: [{ label: '24 Jam', price: 15000 }] },
 ]
 
 const BOOKED_DATES = ['2026-07-05', '2026-07-12', '2026-07-20']
@@ -92,11 +51,11 @@ const LOCATIONS = ['Lamongan Kota', 'Bojonegoro', 'Dukun, Gresik', 'Benjeng, Gre
 const PAYMENTS  = ['Transfer Bank', 'QRIS', 'Tunai (Bayar di Studio)', 'ShopeePay / GoPay / OVO']
 
 const imgs = import.meta.glob('../assets/**/*.{png,jpg,jpeg,webp}', { eager: true, query: '?url', import: 'default' })
-const getImg = (cat, filename) => imgs[`../assets/${cat}/${filename}`] ?? ''
+const getImg = (path) => imgs[`../assets/${path}`] ?? ''
 
 const STEPS = ['Konfirmasi Alat', 'Pilih Durasi', 'Pilih Tanggal & Jam', 'Pilih Lokasi', 'Pembayaran', 'Catatan']
 
-export default function RentalBookingPage() {
+export default function RentalIphoneBookingPage() {
   const [searchParams] = useSearchParams()
   const itemId = searchParams.get('item') || ''
   const navigate   = useNavigate()
@@ -105,7 +64,7 @@ export default function RentalBookingPage() {
 
   const selectedItem = ITEMS.find(i => i.id === itemId) || ITEMS[0]
   const cam = selectedItem
-  const itemImg = getImg(selectedItem.cat, selectedItem.img || '')
+  const itemImg = getImg(selectedItem.img || '')
 
   const now = new Date()
   const [step, setStep]                       = useState(0)
@@ -141,7 +100,7 @@ export default function RentalBookingPage() {
   const submit = () => {
     const dateTimeStr = selectedDate + (selectedTime ? ` · ${selectedTime}` : '')
     const orderId = addBooking({
-      type: 'Rental Kamera',
+      type: 'Rental iPhone',
       package: `${cam.name} – ${selectedVariant?.label}`,
       price,
       location,
@@ -153,7 +112,7 @@ export default function RentalBookingPage() {
       userEmail: user?.email || '',
     })
     navigate('/invoice', { state: {
-      orderId, type: 'Rental Kamera',
+      orderId, type: 'Rental iPhone',
       package: `${cam.name} – ${selectedVariant?.label}`,
       location, payment, notes, total: price,
       date: dateTimeStr || new Date().toLocaleDateString('id-ID'),
@@ -179,8 +138,8 @@ export default function RentalBookingPage() {
   return (
     <div className="min-h-screen bg-[#F0FDFB] pt-20 pb-16">
       <div className="container-x max-w-2xl">
-        <h1 className="font-display font-bold text-2xl text-main mb-2">Booking Rental Kamera</h1>
-        <p className="text-sub text-sm mb-8">Isi detail sewa kamera kamu di bawah ini.</p>
+        <h1 className="font-display font-bold text-2xl text-main mb-2">Booking Rental iPhone</h1>
+        <p className="text-sub text-sm mb-8">Isi detail sewa iPhone kamu di bawah ini.</p>
 
         {/* Step bar */}
         <div className="flex items-center gap-1 mb-8 overflow-x-auto">
@@ -222,7 +181,7 @@ export default function RentalBookingPage() {
               </div>
               <button onClick={() => navigate(-1)}
                 className="mt-4 text-xs text-sub hover:text-main transition-colors">
-                ← Ganti alat? Kembali ke katalog
+                ← Ganti iPhone? Kembali ke katalog
               </button>
             </div>
           )}
@@ -237,7 +196,7 @@ export default function RentalBookingPage() {
                 <div className="w-12 h-12 rounded-lg overflow-hidden bg-[#E6FAF7] flex-shrink-0">
                   {itemImg
                     ? <img src={itemImg} alt={cam.name} loading="lazy" className="w-full h-full object-cover" />
-                    : <div className="w-full h-full flex items-center justify-center text-xl">📷</div>}
+                    : <div className="w-full h-full flex items-center justify-center text-xl">📱</div>}
                 </div>
                 <div className="font-semibold text-sm text-main">{cam.name}</div>
               </div>
@@ -418,7 +377,7 @@ export default function RentalBookingPage() {
               </div>
 
               <textarea value={notes} onChange={e => setNotes(e.target.value)}
-                placeholder="Contoh: butuh lensa tambahan, antar ke alamat..."
+                placeholder="Contoh: butuh aksesoris tambahan, antar ke alamat..."
                 rows={4}
                 className="w-full bg-white border-2 border-zinc-300 rounded-xl px-4 py-3 text-sm text-main placeholder:text-sub focus:outline-none focus:border-[#00E5CC] transition-colors resize-none"
               />

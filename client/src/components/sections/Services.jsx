@@ -28,7 +28,7 @@ const SERVICES = [
     src: heroImg('layanan-3.png'),
   },
   {
-    slug: 'video',
+    slug: 'rental-iphone',
     name: 'Rental Iphone',
     desc: ' Sewa iPhone terbaru untuk produksi konten, reels, dan iklan produk.',
     src: heroImg('layanan-4.png'),
